@@ -17,13 +17,20 @@ class WSLRunner(QThread):
         self.status_changed.emit("running")
 
         try:
+            import os
+            # Avoid flashing cmd windows on Windows when running --windowed pyinstaller app
+            creationflags = 0
+            if os.name == 'nt':
+                creationflags = subprocess.CREATE_NO_WINDOW
+
             # bufsize=1 and text=True provide line-buffered string output
             self.process = subprocess.Popen(
                 ['wsl', '--exec', 'bash', '-c', self.command],
                 stdout=subprocess.PIPE,
                 stderr=subprocess.STDOUT,
                 text=True,
-                bufsize=1
+                bufsize=1,
+                creationflags=creationflags
             )
 
             # Read line by line. This blocks the background thread, NOT the UI.
