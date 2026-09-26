@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسلا موديل X للبيع - 2023</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .gallery-main {
+            height: 400px;
+            object-fit: cover;
+        }
+        @media (max-width: 640px) {
+            .gallery-main {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-900">سيارات للبيع</h1>
+            <a href="https://wa.me/9647902301920" target="_blank" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg shadow transition flex items-center gap-2">
+                تواصل واتساب
+            </a>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-6 sm:py-8">
+
+        <div class="bg-white rounded-2xl shadow-md overflow-hidden">
+            <!-- Title & Top Info -->
+            <div class="p-6 border-b border-gray-100">
+                <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <h2 class="text-3xl font-bold text-gray-900 mb-2">تسلا موديل X - فئة Plaid (2023)</h2>
+                        <p class="text-gray-500 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            الموقع: بغداد
+                        </p>
+                    </div>
+                    <div class="text-left bg-green-50 px-6 py-3 rounded-xl border border-green-100">
+                        <span class="block text-sm text-green-600 font-semibold mb-1">السعر المطلوب</span>
+                        <div class="text-3xl font-extrabold text-green-700">53,000 دولار</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                <!-- Image Gallery -->
+                <div class="p-4 sm:p-6 bg-gray-50 border-b lg:border-b-0 lg:border-l border-gray-100">
+                    <div class="mb-4 rounded-xl overflow-hidden shadow-sm relative group">
+                        <img id="mainImage" src="image1.jpg" alt="تسلا موديل X" class="w-full gallery-main cursor-pointer transition duration-300" onclick="openModal()">
+                    </div>
+
+                    <!-- Thumbnails -->
+                    <div class="grid grid-cols-5 gap-2" id="thumbnailContainer">
+                        <!-- Thumbnails injected via JS -->
+                    </div>
+                </div>
+
+                <!-- Key Specs & Details -->
+                <div class="p-4 sm:p-6">
+                    <!-- Highlighted Info Cards -->
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-red-50 p-4 rounded-xl border border-red-100">
+                            <span class="block text-sm text-red-600 font-semibold mb-1">الحالة وتاريخ السيارة</span>
+                            <div class="text-lg font-bold text-red-800">معاد بناؤها (Rebuilt)</div>
+                            <p class="text-xs text-red-700 mt-1">3 قطع مصبوغة، لم تفتح الوسائد الهوائية</p>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+                            <span class="block text-sm text-green-600 font-semibold mb-1">المسافة المقطوعة</span>
+                            <div class="text-xl font-bold text-blue-800">41,022 ميل</div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 pb-2 border-b">المواصفات والتفاصيل</h3>
+
+                    <ul class="space-y-3">
+                        <li class="flex justify-between items-center py-2 border-b border-gray-50">
+                            <span class="text-gray-500 font-medium">الماركة والموديل</span>
+                            <span class="font-bold text-gray-900">تسلا - موديل X</span>
+                        </li>
+                        <li class="flex justify-between items-center py-2 border-b border-gray-50">
+                            <span class="text-gray-500 font-medium">السنة والفئة</span>
+                            <span class="font-bold text-gray-900">2023 - Plaid</span>
+                        </li>
+                        <li class="flex justify-between items-center py-2 border-b border-gray-50">
+                            <span class="text-gray-500 font-medium">المواصفات</span>
+                            <span class="font-bold text-gray-900">أمريكية (EV)</span>
+                        </li>
+                        <li class="flex justify-between items-center py-2 border-b border-gray-50">
+                            <span class="text-gray-500 font-medium">نظام الدفع</span>
+                            <span class="font-bold text-gray-900">3 محركات (1000 حصان)</span>
+                        </li>
+                        <li class="flex justify-between items-center py-2 border-b border-gray-50">
+                            <span class="text-gray-500 font-medium">البطارية والمدى</span>
+                            <span class="font-bold text-gray-900">100 kWh - 330 ميل</span>
+                        </li>
+                        <li class="flex justify-between items-center py-2 border-b border-gray-50">
+                            <span class="text-gray-500 font-medium">اللون والداخلية</span>
+                            <span class="font-bold text-gray-900">أبيض - جلد، 6 مقاعد</span>
+                        </li>
+                        <li class="flex justify-between items-center py-2 border-b border-gray-50">
+                            <span class="text-gray-500 font-medium">رقم السيارة</span>
+                            <span class="font-bold text-gray-900">بغداد، خصوصي</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-4 bg-gray-50 p-4 rounded-lg text-sm text-gray-700">
+                        <strong class="text-gray-900 block mb-1">ملاحظة إضافية عن عجلة القيادة:</strong>
+                        تشمل السيارة كل من عجلة القيادة المربعة (Yoke) وعجلة القيادة الدائرية القياسية.
+                    </div>
+
+                    <!-- Contact -->
+                    <div class="mt-6 pt-6 border-t border-gray-200">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-green-100 p-3 rounded-full">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">للتواصل عبر واتساب</p>
+                                <a href="https://wa.me/9647902301920" target="_blank" class="text-xl font-bold text-green-600 hover:underline" dir="ltr">0790 230 1920</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 py-6 text-center mt-8">
+        <p>عرض سيارة للبيع - جميع الحقوق محفوظة &copy; 2023</p>
+    </footer>
+
+    <!-- Fullscreen Image Modal -->
+    <div id="imageModal" class="fixed inset-0 z-[100] bg-black bg-opacity-95 hidden flex justify-center items-center opacity-0 transition-opacity duration-300">
+        <button onclick="closeModal()" class="absolute top-4 right-4 text-white hover:text-gray-300 bg-gray-800 rounded-full p-2">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+        <img id="modalImage" src="" alt="صورة مكبرة" class="max-h-[90vh] max-w-[95vw] object-contain rounded-lg shadow-2xl">
+    </div>
+
+    <!-- JavaScript for Gallery -->
+    <script>
+        const totalImages = 10;
+        const mainImage = document.getElementById('mainImage');
+        const modalImage = document.getElementById('modalImage');
+        const modal = document.getElementById('imageModal');
+        const thumbnailContainer = document.getElementById('thumbnailContainer');
+
+        function changeImage(src, element) {
+            mainImage.src = src;
+
+            // Update active state on thumbnails
+            document.querySelectorAll('.thumbnail-img').forEach(img => {
+                img.classList.remove('ring-2', 'ring-blue-500', 'opacity-100');
+                img.classList.add('opacity-70');
+            });
+
+            element.classList.remove('opacity-70');
+            element.classList.add('ring-2', 'ring-blue-500', 'opacity-100');
+        }
+
+        // Initialize thumbnails
+        for (let i = 1; i <= totalImages; i++) {
+            const src = `image${i}.jpg`;
+            const img = document.createElement('img');
+            img.src = src;
+            img.alt = `صورة ${i}`;
+            img.className = `thumbnail-img w-full h-16 sm:h-20 object-cover rounded-md cursor-pointer transition hover:opacity-100 ${i === 1 ? 'ring-2 ring-blue-500 opacity-100' : 'opacity-70'}`;
+            img.onclick = function() { changeImage(src, this); };
+            thumbnailContainer.appendChild(img);
+        }
+
+        // Modal functions
+        function openModal() {
+            modalImage.src = mainImage.src;
+            modal.classList.remove('hidden');
+            // Small delay to allow display block to apply before changing opacity
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close modal on click outside image
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Keyboard navigation for modal (Esc to close)
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
