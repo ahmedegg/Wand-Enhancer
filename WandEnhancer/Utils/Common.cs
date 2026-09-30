@@ -3,12 +3,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace WandEnhancer.Utils
 {
     public static class Common
     {
-        public static void TryKillProcess(string processName)
+        public static async Task TryKillProcessAsync(string processName)
         {
             Process[] processes = Process.GetProcessesByName(processName);
             // Retry while any target process is still alive, capped at 5 attempts.
@@ -31,7 +32,7 @@ namespace WandEnhancer.Utils
                 }
                 
                 processes = Process.GetProcessesByName(processName);
-                Thread.Sleep(250);
+                await Task.Delay(250);
             }
             
             if (processes.Length > 0)

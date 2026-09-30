@@ -150,11 +150,11 @@ namespace WandEnhancer.View.MainWindow
             {
                 MainWindow.Instance.ClosePopup();
                 IsPatchEnabled = false;
-                await Task.Run(() =>
+                await Task.Run(async () =>
                 {
                     try
                     {
-                        new Enhancer(WeModInfo, Log, config).Patch();
+                        await new Enhancer(WeModInfo, Log, config).PatchAsync();
                         AlreadyPatched = true;
                     }
                     catch (Exception e)
