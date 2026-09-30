@@ -15,10 +15,6 @@ namespace WandEnhancer
             TaskScheduler.UnobservedTaskException += OnUnobservedTaskException;
             
             List<LogEntry> logEntries = new List<LogEntry>();
-            if (args.Length > 0)
-            {
-                // TODO: Command line arguments handling
-            }
 
             var application = new App();
             application.InitializeComponent();
