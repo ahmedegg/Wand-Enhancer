@@ -172,7 +172,13 @@ export function buildSnapshot(state) {
         preferredApp.displayName,
         gameId
       ),
-      imageUrl: pickImageUrlForTitle(title, game, preferredApp, sidebarClientIconUrl, versions),
+      imageUrl: pickImageUrlForTitle(
+        title,
+        game,
+        preferredApp,
+        sidebarClientIconUrl,
+        versions
+      ),
       gameId: String(gameId),
       titleId,
     })
@@ -213,7 +219,12 @@ export function buildSnapshot(state) {
           preferredApp.displayName,
           preferredApp.correlationId
         ),
-        imageUrl: pickImageUrlForTitle(unavailableTitle, game, preferredApp, sidebarClientIconUrl),
+        imageUrl: pickImageUrlForTitle(
+          unavailableTitle,
+          game,
+          preferredApp,
+          sidebarClientIconUrl
+        ),
         gameId: toStringId(game.id),
         titleId,
       })
@@ -379,6 +390,7 @@ async function fetchUnavailableTitles(state, correlationIds) {
   const nextTitlesById = {}
 
   try {
+    const promises = []
     for (
       let index = 0;
       index < correlationIds.length;
@@ -388,14 +400,17 @@ async function fetchUnavailableTitles(state, correlationIds) {
         index,
         index + UNAVAILABLE_TITLES_BATCH_SIZE
       )
-      const response =
-        await state.unavailableTitlesService.getUnavailableTitlesByCorrelationIds(
-          batch
-        )
-      for (const title of normalizeUnavailableTitlesResponse(response)) {
-        nextTitlesById[title.id] = title
-      }
+      promises.push(
+        state.unavailableTitlesService
+          .getUnavailableTitlesByCorrelationIds(batch)
+          .then((response) => {
+            for (const title of normalizeUnavailableTitlesResponse(response)) {
+              nextTitlesById[title.id] = title
+            }
+          })
+      )
     }
+    await Promise.all(promises)
 
     state.unavailableTitlesById = nextTitlesById
     state.log(
@@ -555,10 +570,17 @@ function compareByIdentity(left, right) {
   return left.sku.localeCompare(right.sku)
 }
 
-function pickImageUrlForTitle(title, game, preferredApp, sidebarClientIconUrl, versions) {
-  const steamRoots = versions !== undefined
-    ? [title, game, versions, preferredApp]
-    : [title, game, preferredApp]
+function pickImageUrlForTitle(
+  title,
+  game,
+  preferredApp,
+  sidebarClientIconUrl,
+  versions
+) {
+  const steamRoots =
+    versions !== undefined
+      ? [title, game, versions, preferredApp]
+      : [title, game, preferredApp]
 
   return pickImageUrl(
     title?.imageUrl,
