@@ -37,15 +37,15 @@ function buildRendererBootstrap(remoteUrl, scripts) {
 
     const body = scripts.map((script) => {
         const tag = JSON.stringify(`wand-enhancer-script-${script.name}`);
+        const safeSource = JSON.stringify(`${script.source}\n//# sourceURL=${tag.slice(1, -1)}`);
         return `
       ;(function (WandEnhancer) {
         try {
-          ${script.source}
+          eval(${safeSource});
         } catch (error) {
           try { console.warn("[wand-remote-bridge] Renderer script failed", ${JSON.stringify(script.name)}, error); } catch (_) {}
         }
       })(globalThis.WandEnhancer);
-      //# sourceURL=${tag.slice(1, -1)}
     `;
     }).join('\n');
 
