@@ -88,6 +88,21 @@ describe('production bridge runtime', () => {
       runtime.close();
     }
   });
+
+  it('rejects path traversal attempts on the assets endpoint', async () => {
+    const bridge = require('../../dist/bridge.cjs');
+    const port = await getFreePort();
+    const runtime = bridge.createBridgeRuntime({ host: '127.0.0.1', port, maxPort: port });
+
+    try {
+      await waitUntil(() => runtime.listening);
+      // Attempt to traverse up out of the panelRoot using url-encoded traversal sequences
+      const pathTraversalResponse = await sendRawHttp(port, 'GET /remote/assets/%2e%2e%2f%2e%2e%2f%2e%2e%2fetc/passwd HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n');
+      expect(pathTraversalResponse).toContain('HTTP/1.1 403 Forbidden');
+    } finally {
+      runtime.close();
+    }
+  });
 });
 
 async function getFreePort(): Promise<number> {

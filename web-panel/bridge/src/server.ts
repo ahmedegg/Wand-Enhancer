@@ -101,7 +101,22 @@ function createBridgeServer(options: BridgeOptions = {}) {
         }
 
         if (url.pathname.startsWith(REMOTE_ASSETS_PREFIX)) {
-            serveFile(response, path.join(panelRoot, url.pathname.replace(REMOTE_BASE_PATH, '')));
+            try {
+                const decodedPath = decodeURIComponent(url.pathname.replace(REMOTE_BASE_PATH, ''));
+                const targetPath = path.resolve(path.join(panelRoot, decodedPath));
+                const rootPath = path.resolve(panelRoot);
+
+                if (!targetPath.startsWith(rootPath + path.sep)) {
+                    response.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
+                    response.end('Forbidden');
+                    return;
+                }
+
+                serveFile(response, targetPath);
+            } catch {
+                response.writeHead(400, { 'Content-Type': 'text/plain; charset=utf-8' });
+                response.end('Bad Request');
+            }
             return;
         }
 
