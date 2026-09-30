@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using AsarSharp;
 using WandEnhancer.Models;
 using WandEnhancer.Utils;
@@ -434,9 +435,9 @@ namespace WandEnhancer.Core
             _logger("[ENHANCER] Proxy DLL attached", ELogType.Info);
         }
 
-        public void Patch()
+        public async Task PatchAsync()
         {
-            Common.TryKillProcess(_weModConfig.BrandName);
+            await Common.TryKillProcessAsync(_weModConfig.BrandName);
             if (!File.Exists(_backupPath))
             {
                 _logger("[ENHANCER] Creating backup...", ELogType.Info);
